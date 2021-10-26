@@ -6,6 +6,11 @@ Welcome to the magical world of [Bézier Curves](https://en.wikipedia.org/wiki/B
 
 Draw cool arts using Bezier curves [here](https://silwalanish.github.io/bezier-curve/).
 
+This repository implements the [De Casteljau's algorithm](https://en.wikipedia.org/wiki/De_Casteljau%27s_algorithm) to visualize the Bézier curves.
+
+## Inspiration
+- [The Beauty of Bézier Curves - Freya Holmer](https://youtu.be/aVwxzDHniEw)
+
 ## Features
 - [x] Add curve.
 - [x] Remove curve.
@@ -19,6 +24,7 @@ Draw cool arts using Bezier curves [here](https://silwalanish.github.io/bezier-c
 - [ ] Save the picture as image.
 - [ ] Copy the picture to clipboard as image.
 - [ ] Export the picture as SVG.
+- [ ] Add ability to add control points in the middle as well.
 - [ ] Color picker for curve.
 - [ ] Select multiple curves with CTRL+click.
 - [ ] Select multiple curves using selection rectangle.
