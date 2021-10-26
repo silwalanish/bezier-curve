@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bezier Curve</title>
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="help-text">
+      <h3>Welcome to the magical world of <a href="https://en.wikipedia.org/wiki/B%C3%A9zier_curve" target="blank">Bézier curve</a>.</h3>
+      <p>
+        Use Bézier curve to draw cool images.
+        <ul type="square">
+          <li>Click on empty canvas to add a curve.</li>
+          <li>Click on a curve to select the curve.</li>
+          <li>
+            When a curve is selected:
+            <ul>
+              <li>Press <b>"ESC"</b> key to unselect.</li>
+              <li>Press <b>"DELETE"</b> key to remove the selected curve.</li>
+              <li>Click on the canvas to add a new control point.</li>
+              <li>Click on the control point to select it.</li>
+              <li>Click and drag on the control point to move it.</li>
+            </ul>
+          </li>
+          <li>
+            When a control point is selected:
+            <ul>
+              <li>Press <b>"DELETE"</b> key to remove the selected control point.</li>
+            </ul>
+          </li>
+        </ul>
+
+        <u>Note: Deselect the selected curve to select another curve.</u>
+      </p>
+
+      <h4>Features:</h4>
+      <ul>
+        <li><input type='checkbox' disabled checked> Add curve.</li>
+        <li><input type='checkbox' disabled checked> Remove curve.</li>
+        <li><input type='checkbox' disabled checked> Select single curve.</li>
+        <li><input type='checkbox' disabled checked> Deselect curve.</li>
+        <li><input type='checkbox' disabled checked> Add control points.</li>
+        <li><input type='checkbox' disabled checked> Move control points.</li>
+        <li><input type='checkbox' disabled checked> Remove control points.</li>
+        <li><input type='checkbox' disabled checked> Select single control point.</li>
+        <li><input type='checkbox' disabled checked> Deselect control point.</li>
+        <li><input type='checkbox' disabled> Save the picture as image.</li>
+        <li><input type='checkbox' disabled> Copy the picture to clipboard as image.</li>
+        <li><input type='checkbox' disabled> Export the picture as SVG.</li>
+        <li><input type='checkbox' disabled> Color picker for curve.</li>
+        <li><input type='checkbox' disabled> Select multiple curves with CTRL+click.</li>
+        <li><input type='checkbox' disabled> Select multiple curves using selection rectangle.</li>
+        <li><input type='checkbox' disabled> Select multiple control points with CTRL+click.</li>
+        <li><input type='checkbox' disabled> Select multiple control points using selection rectangle.</li>
+        <li><input type='checkbox' disabled> Move/Remove the selected curves.</li>
+        <li><input type='checkbox' disabled> Move/Remove the selected control points.</li>
+        <li><input type='checkbox' disabled> Zoom in and out in the canvas.</li>
+        <li><input type='checkbox' disabled> Move the canvas around by dragging.</li>
+        <li><input type='checkbox' disabled> Make website pretty.</li>
+      </ul>
+    </div>
+    <div class="canvas-cont" id="visualization"></div>
+  </div>
+  <script src="js/index.js" type="module"></script>
+</body>
+</html>

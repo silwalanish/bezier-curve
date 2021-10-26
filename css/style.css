@@ -1,0 +1,13 @@
+* {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.canvas-cont canvas{
+  box-shadow: 1px 8px 8px #000000;
+  margin-bottom: 10px;
+}
