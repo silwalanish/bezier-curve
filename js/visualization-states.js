@@ -19,7 +19,16 @@ export class VisualizationState {
     this.selectedControlPoint = null;
     this.selectedControlPointCopy = null;
 
+    this.hoveringControlLine = null;
+
     this.updateCurveMeshesMap();
+  }
+
+  setHoveringControlLine(startControlPoint, endControlPoint) {
+    this.hoveringControlLine = {
+      start: startControlPoint,
+      end: endControlPoint,
+    };
   }
 
   setCurveMeshMap(curve) {
@@ -74,6 +83,17 @@ export class VisualizationState {
     }
   }
 
+  addNewControlPointBetweenHoveredControlLine(point) {
+    if (this.selectedCurve && point && this.hoveringControlLine) {
+      let index = this.selectedCurve.controlPoints.findIndex(
+        (point) => point === this.hoveringControlLine.start
+      );
+      this.selectedCurve.controlPoints.splice(index + 1, 0, point);
+      this.setCurveMeshMap(this.selectedCurve);
+      this.selectControlPoint(point);
+    }
+  }
+
   addNewCurve(curve) {
     if (curve) {
       this.curves.push(curve);
@@ -92,6 +112,8 @@ export class VisualizationState {
       this.curves = this.curves.filter((curve) => {
         return curve != this.selectedCurve;
       });
+
+      this.hoveringControlLine = null;
 
       this.unselectCurve();
     }
@@ -130,6 +152,14 @@ export class VisualizationState {
         this.selectedCurve.controlPoints.filter((point) => {
           return point != this.selectedControlPoint;
         });
+
+      if (
+        this.hoveringControlLine &&
+        (this.hoveringControlLine.start === this.selectedControlPoint ||
+          this.hoveringControlLine.end === this.selectedControlPoint)
+      ) {
+        this.hoveringControlLine = null;
+      }
 
       this.unselectControlPoint();
       this.setCurveMeshMap(this.selectedCurve);

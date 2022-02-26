@@ -16,6 +16,24 @@ export class Point {
     return this.x ** 2 + this.y ** 2;
   }
 
+  liesBetweenPoints(a, b) {
+    return (
+      Math.min(a.x, b.x) <= this.x &&
+      this.x <= Math.max(a.x, b.x) &&
+      Math.min(a.y, b.y) <= this.y &&
+      this.y <= Math.max(a.y, b.y)
+    );
+  }
+
+  liesOnLine(start, end, maxError = 100) {
+    let error =
+      (end.x - start.x) * (this.y - start.y) -
+      (this.x - start.x) * (end.y - start.y);
+    let isCollinear = Math.abs(error) <= maxError;
+
+    return isCollinear && this.liesBetweenPoints(start, end);
+  }
+
   static dot(a, b) {
     return a.x * b.x + a.y * b.y;
   }

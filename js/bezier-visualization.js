@@ -124,7 +124,7 @@ export class BezierCurveVisualization {
 
   clear() {
     this.context.save();
-    this.context.fillStyle = '#000000';
+    this.context.fillStyle = '#ffffff';
     this.context.fillRect(0, 0, this.state.width, this.state.height);
     this.context.restore();
   }
@@ -160,6 +160,7 @@ export class BezierCurveVisualization {
     let colisionTestResult = this.colisionTestResults.get(curve);
     let color =
       isCurveHovered && !isUserFocused ? '#ffffff' : curveMeshMap.color;
+    let isMousePosInControlLine = !!this.state.hoveringControlLine;
 
     this.context.save();
     this.context.globalAlpha = isUserFocused && !isCurveSelected ? 0.2 : 1.0;
@@ -177,6 +178,15 @@ export class BezierCurveVisualization {
         this.state.controlPointSize,
         this.state.selectedControlPoint
       );
+
+      if (isMousePosInControlLine) {
+        drawPoint(
+          this.userInputManager.mousePos,
+          this.context,
+          this.state.controlPointSize,
+          '#440000ff'
+        );
+      }
     }
 
     if (this.state.animate) {
@@ -203,8 +213,26 @@ export class BezierCurveVisualization {
     this.time %= 1.0;
   }
 
+  update() {
+    this.state.hoveringControlLine = null;
+
+    if (this.state.selectedCurve && this.userInputManager.mousePos) {
+      let curve = this.state.selectedCurve;
+
+      for (let i = 0; i < curve.controlPoints.length - 1; i++) {
+        let start = curve.controlPoints[i];
+        let end = curve.controlPoints[i + 1];
+        if (this.userInputManager.mousePos.liesOnLine(start, end)) {
+          this.state.setHoveringControlLine(start, end);
+          break;
+        }
+      }
+    }
+  }
+
   loop() {
     this.clear();
+    this.update();
     this.draw();
 
     this.currentTime = Date.now();

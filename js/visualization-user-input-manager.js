@@ -46,6 +46,9 @@ export class VisualizationUserInputManager {
       } else if (this.visualizer.state.selectedControlPoint) {
         // Unselect previously selected point if clicked on a empty space.
         this.visualizer.state.unselectControlPoint();
+      } else if (this.visualizer.state.hoveringControlLine) {
+        // Add a new control point between control points at mouse position if no point is selected.
+        this.visualizer.state.addNewControlPointBetweenHoveredControlLine(this.mousePos.copy());
       } else {
         // Add a new control point at mouse position if no point is selected.
         this.visualizer.state.addNewControlPoint(this.mousePos.copy());

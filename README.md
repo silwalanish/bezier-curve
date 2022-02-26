@@ -21,10 +21,10 @@ This repository implements the [De Casteljau's algorithm](https://en.wikipedia.o
 - [x] Remove control points.
 - [x] Select single control point.
 - [x] Deselect control point.
+- [x] Add ability to add control points between other control points.
 - [ ] Save the picture as image.
 - [ ] Copy the picture to clipboard as image.
 - [ ] Export the picture as SVG.
-- [ ] Add ability to add control points in the middle as well.
 - [ ] Color picker for curve.
 - [ ] Select multiple curves with CTRL+click.
 - [ ] Select multiple curves using selection rectangle.
